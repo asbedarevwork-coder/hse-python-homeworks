@@ -19,7 +19,17 @@ def decode_caesar_cipher(text: str, shift: int) -> str:
     Пример: decode_caesar_cipher("Khoor!", 3) -> "Hello!"
     """
     # TODO: ваш код здесь
-    ...
+    
+    empty_string = ''
+    for symbol in text:
+        if 'A' <= symbol <= 'Z':
+            symbol = chr((ord(symbol) - ord('A') - shift) % 26 + ord('A')) #обрабатываем случай с выходом из диапазона букв
+        elif 'a' <= symbol <= 'z':
+            symbol = chr((ord(symbol) - ord('a') - shift) % 26 + ord('a')) #аналогично для нижнего регистра
+
+        empty_string += symbol
+
+    return empty_string
 
 
 if __name__ == "__main__":
